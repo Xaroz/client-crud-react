@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UserTable from "./table/UserTable";
 import AddUserForm from "./forms/AddUserForm";
 import EditUserForm from "./forms/EditUserForm";
+import UseLocalStorage from "./UseLocalStorage"
 
 const App = () => {
-  const usersData = [
-    
-  ];
 
-  const [users, setUsers] = useState(usersData);
-  const [ lastUsedId, setLastUsedId ] = useState(0);
+  const currentId = () => Number(window.localStorage.getItem('users') ? window.localStorage.getItem('lastUsedId') : 0);
+
   
+  const [users, setUsers] = UseLocalStorage("users", "");
+  const [lastUsedId, setLastUsedId] = useState(currentId);
+
+  useEffect(() => {
+    window.localStorage.setItem('lastUsedId', lastUsedId);
+  },[lastUsedId]);
+
   const addUser = user => {
     user.id = lastUsedId + 1;
     setLastUsedId(user.id);
@@ -24,12 +29,22 @@ const App = () => {
   };
 
   const [editing, setEditing] = useState(false);
-  const initialFormState = { id: null, name: "", balance: "",  registerDate: ""};
+  const initialFormState = {
+    id: null,
+    name: "",
+    balance: "",
+    registerDate: ""
+  };
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
   const editRow = user => {
     setEditing(true);
-    setCurrentUser({ id: user.id, name: user.name, balance: user.balance, registerDate: user.registerDate });
+    setCurrentUser({
+      id: user.id,
+      name: user.name,
+      balance: user.balance,
+      registerDate: user.registerDate
+    });
   };
 
   const updateUser = (id, updateUser) => {
@@ -57,7 +72,7 @@ const App = () => {
             <div>
               <h4>Agregar Cliente</h4>
               <hr />
-              <AddUserForm addUser = {addUser} />
+              <AddUserForm addUser={addUser} />
             </div>
           )}
         </div>

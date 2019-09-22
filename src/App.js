@@ -5,9 +5,7 @@ import EditUserForm from "./forms/EditUserForm";
 
 const App = () => {
   const usersData = [
-    { id: 1, name: "Tania", username: "floppydiskette" },
-    { id: 2, name: "Craig", username: "siliconeidolon" },
-    { id: 3, name: "Ben", username: "benisphere" }
+    
   ];
 
   const [users, setUsers] = useState(usersData);
@@ -41,12 +39,13 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Tabla de Clientes</h1>
-      <div className="flex-row">
+      <h1>Clientes</h1>
+      <hr />
+      <div className="flex-large">
         <div className="flex-large">
           {editing ? (
             <div>
-              <h2>Edit User</h2>
+              <h4>Editar Cliente</h4>
               <EditUserForm
                 editing={editing}
                 setEditing={setEditing}
@@ -56,13 +55,15 @@ const App = () => {
             </div>
           ) : (
             <div>
-              <h2>Add User</h2>
+              <h4>Agregar Cliente</h4>
+              <hr />
               <AddUserForm addUser = {addUser} />
             </div>
           )}
         </div>
         <div className="flex-large">
-          <h2>View users</h2>
+          <h2>Tabla de clientes</h2>
+          <hr />
           <UserTable users={users} deleteUser={deleteUser} editRow={editRow} />
         </div>
       </div>

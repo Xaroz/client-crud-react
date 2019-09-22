@@ -35,12 +35,12 @@ const EditUserForm = props => {
         value={user.balance}
         onChange={handleInputChange}
       />
-      <button>Update user</button>
+      <button>Guardar Cambios</button>
       <button
         onClick={() => props.setEditing(false)}
         className="button muted-button"
       >
-        Cancel
+        Cancelar
       </button>
     </form>
   );

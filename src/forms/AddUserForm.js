@@ -6,7 +6,7 @@ const AddUseForm = props => {
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-
+    
     setUser({ ...user, [name]: value });
   };
 
@@ -33,7 +33,7 @@ const AddUseForm = props => {
         value={user.balance}
         onChange={handleInputChange}
       />
-      <button>Add New User</button>
+      <button>Agregar Cliente</button>
     </form>
   );
 };

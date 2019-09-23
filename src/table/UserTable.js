@@ -4,7 +4,7 @@ const UserTable = props => (
   <table>
     <thead>
       <tr>
-        <th>Codigo</th>
+        <th>Código</th>
         <th>Name</th>
         <th>Balance</th>
         <th>Fecha de Registro</th>
@@ -31,10 +31,6 @@ const UserTable = props => (
                 className="button muted-button"
               >
                 Borrar
-              </button>
-              <button
-              className = "button muted-button">
-                  Ver
               </button>
             </td>
           </tr>

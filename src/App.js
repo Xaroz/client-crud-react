@@ -1,89 +1,14 @@
-import React, { useState, useEffect } from "react";
-import UserTable from "./table/UserTable";
-import AddUserForm from "./forms/AddUserForm";
-import EditUserForm from "./forms/EditUserForm";
-import UseLocalStorage from "./UseLocalStorage"
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import UserPage from "./pages/UserPage";
+import ViewClientPage from "./pages/ViewClientPage";
 
-const App = () => {
-
-  const currentId = () => Number(window.localStorage.getItem('users') ? window.localStorage.getItem('lastUsedId') : 0);
-
-  
-  const [users, setUsers] = UseLocalStorage("users", "");
-  const [lastUsedId, setLastUsedId] = useState(currentId);
-
-  useEffect(() => {
-    window.localStorage.setItem('lastUsedId', lastUsedId);
-  },[lastUsedId]);
-
-  const addUser = user => {
-    user.id = lastUsedId + 1;
-    setLastUsedId(user.id);
-    user.registerDate = new Date().toLocaleDateString();
-    setUsers([...users, user]);
-  };
-
-  const deleteUser = id => {
-    setEditing(false);
-    setUsers(users.filter(user => user.id !== id));
-  };
-
-  const [editing, setEditing] = useState(false);
-  const initialFormState = {
-    id: null,
-    name: "",
-    balance: "",
-    registerDate: ""
-  };
-  const [currentUser, setCurrentUser] = useState(initialFormState);
-
-  const editRow = user => {
-    setEditing(true);
-    setCurrentUser({
-      id: user.id,
-      name: user.name,
-      balance: user.balance,
-      registerDate: user.registerDate
-    });
-  };
-
-  const updateUser = (id, updateUser) => {
-    setEditing(false);
-    setUsers(users.map(user => (user.id === id ? updateUser : user)));
-  };
-
+export default function App() {
   return (
-    <div className="container">
-      <h1>Clientes</h1>
-      <hr />
-      <div className="flex-large">
-        <div className="flex-large">
-          {editing ? (
-            <div>
-              <h4>Editar Cliente</h4>
-              <EditUserForm
-                editing={editing}
-                setEditing={setEditing}
-                currentUser={currentUser}
-                updateUser={updateUser}
-              />
-            </div>
-          ) : (
-            <div>
-              <h4>Agregar Cliente</h4>
-              <hr />
-              <AddUserForm addUser={addUser} />
-            </div>
-          )}
-        </div>
-        <div className="flex-large">
-          <h2>Tabla de clientes</h2>
-          <hr />
-          <UserTable users={users} deleteUser={deleteUser} editRow={editRow} />
-        </div>
-      </div>
-    </div>
+    <Switch>
+      <Route exact path="/HomePage" component={HomePage} />
+      <Route path="/UserPage" component={UserPage} />
+    </Switch>
   );
-};
-
-export default App;
+}

@@ -3,6 +3,7 @@ import UserTable from "../table/UserTable";
 import EditUserForm from "../forms/EditUserForm";
 import UseLocalStorage from "../UseLocalStorage";
 import { Link } from "react-router-dom";
+import AddUseForm from "../forms/AddUserForm";
 
 const App = () => {
   const currentId = () =>
@@ -68,6 +69,7 @@ const App = () => {
       >
         Add Client
       </Link>
+      <AddUseForm addUser= {addUser} />
       <div className="flex-large">
         <div className="flex-large">
           {editing ? (

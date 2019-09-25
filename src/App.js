@@ -9,6 +9,7 @@ export default function App() {
     <Switch>
       <Route exact path="/HomePage" component={HomePage} />
       <Route path="/UserPage" component={UserPage} />
+      <Route path="/ViewClientPage" component={ViewClientPage} />
     </Switch>
   );
 }

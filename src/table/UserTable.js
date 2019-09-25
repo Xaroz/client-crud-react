@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { ClientProvider } from "../ClientContext";
 
 const UserTable = props => (
   <table>
@@ -33,9 +34,17 @@ const UserTable = props => (
               >
                 Borrar
               </button>
-              <Link to="/ViewClientPage" className="button muted-button">
-                Ver
-              </Link>
+                <Link
+                  to= {{
+                    pathname: "/ViewClientPage",
+                    state: {
+                      user
+                    }
+                  }}
+                  className="button muted-button"
+                >
+                  Ver
+                </Link>
             </td>
           </tr>
         ))

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const AddUseForm = props => {
   const initialFormState = { id: null, name: "", balance: "" , registerDate: "" };
   const [user, setUser] = useState(initialFormState);
-
   const handleInputChange = event => {
     const { name, value } = event.target;
     
@@ -36,7 +35,7 @@ const AddUseForm = props => {
         onChange={handleInputChange}
       />
       <button>Agregar Cliente</button>
-      <Link to="/HomePage" className="button muted-button">
+      <Link to="/" className="button muted-button">
         Volver
       </Link>
     </form>

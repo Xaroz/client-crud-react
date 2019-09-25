@@ -7,9 +7,10 @@ import ViewClientPage from "./pages/ViewClientPage";
 export default function App() {
   return (
     <Switch>
-      <Route exact path="/HomePage" component={HomePage} />
+      <Route exact path="/" component={HomePage} />
       <Route path="/UserPage" component={UserPage} />
       <Route path="/ViewClientPage" component={ViewClientPage} />
     </Switch>
   );
 }
+

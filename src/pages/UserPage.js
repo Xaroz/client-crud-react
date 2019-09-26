@@ -5,7 +5,7 @@ export default function UserPage() {
   return (
     <div>
       <h2>Agregar Cliente</h2>
-      <hr />
+      <hr />      
       <AddUserForm  />
     </div>
   );

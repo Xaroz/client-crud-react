@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 const AddUseForm = props => {
-  const initialFormState = { id: null, name: "", balance: "" , registerDate: "" };
+  const initialFormState = {
+    id: null,
+    name: "",
+    balance: "",
+    registerDate: ""
+  };
   const [user, setUser] = useState(initialFormState);
   const handleInputChange = event => {
     const { name, value } = event.target;
-    
+
     setUser({ ...user, [name]: value });
   };
 

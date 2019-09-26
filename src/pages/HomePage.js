@@ -60,16 +60,7 @@ const App = () => {
     <div className="container">
       <h1>Clientes</h1>
       <hr />
-      <Link
-        to={{
-          pathname: "/UserPage",
-          addUser: addUser
-        }}
-        className="button"
-      >
-        Add Client
-      </Link>
-      <AddUseForm addUser= {addUser} />
+      <AddUseForm addUser={addUser} />
       <div className="flex-large">
         <div className="flex-large">
           {editing ? (
